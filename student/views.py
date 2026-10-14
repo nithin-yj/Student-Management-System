@@ -15,7 +15,7 @@ def create_student(request):
     if request.method == 'POST':
         form = StudentForm(request.POST,request.FILES)
         if form.is_valid():
-            pass
+            print(form.cleaned_data)
             
         
     context = {
