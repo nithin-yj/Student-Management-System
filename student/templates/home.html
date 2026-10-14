@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block content %}
+{% load static %}
+<center>
+    <div style="display: flex;gap: 30px;margin-left: 580px;">
+        <div>
+        <h1>Welcome to Home</h1>
+    </div>
+    <!-- <div style="margin-left: 150px;margin-top: 10px;">
+        <form method="get">
+        {% csrf_token %}
+        <input type="text" name="search" id="" value="{{search}}">
+        <button type="button" class="btn-solid theme-accent">Search</button>
+    </form>
+    </div> -->
+    </div>
+    <hr>
+        <div style="display: flex;flex-wrap: wrap; gap: 15px; justify-content: center;">
+    
+{% if message %}
+<h1>{{message}}</h1>
+{% else %}
+    {% for student in students %}
+        <div class="card" style="width: 18rem; border: 2px solid  black;">
+            {% if student.profile_pic %}
+            <img src="{{student.profile_pic.url}}" class="card-img-top" alt="..." style="width: 250px; height: 350px;margin-left: 20px;margin-top: 10px;">
+            {% else %}
+            <img src="{% static 'images/blank2.jpg' %}" class="card-img-top" alt="..." style="width: 250px; height: 350px;margin-left: 20px;margin-top: 10px;">
+            {% endif %}
+            <div class="card-body" >
+                <h5 class="card-title">Name: {{student.name}} </h5>
+                <p class="card-text">Roll No: {{student.roll_no}}</p>
+                <p class="card-text">Course: {{student.course}}</p>
+                <p class="card-text">Email: {{student.email}}</p>
+                <p class="card-text">Address: {{student.address}}</p>
+                <div style="display: flex; gap: 30px;">
+                    <button type="button" class="btn-outline theme-warning" style="border-radius: 10px;padding: 5px;width: 100px; border: 2px solid black;"><a style="text-decoration: none;color: black;" href="">Update</a></button>
+                <button type="button" class="btn-outline theme-danger" style="border-radius: 10px;padding: 5px;width: 100px; border: 2px solid black;"><a style="text-decoration: none;color: black;" href="">Delete</a></button>
+                </div>
+            </div>
+        </div>
+         {% endfor %}
+    </div>
+{% endif %}
+
+   
+</center>
+{% endblock content %}

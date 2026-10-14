@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Create New Student
+{% endblock title %}
+
+
+{% block content %}
+
+<center>
+    <h1>Create Student</h1>
+    <br>
+<div class="form" style="border: 2px solid black;width: fit-content;padding: 55px;font-size: 20px;">
+        <form action="" method="post">
+        {% csrf_token %}
+    {{form.as_p}}
+    <br>
+    <button style="border-radius: 5px;padding: 5px;">Create Student</button>
+</form>
+</div>
+</center>
+
+{% endblock content %}
