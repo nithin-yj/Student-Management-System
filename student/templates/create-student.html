@@ -16,7 +16,10 @@ Create New Student
             {% for field in form %}
             <p><label for="">{{field.label}}</label><br>
                 {{field}} <br>
-                <span>{{field.errors.0}}</span>
+                {% for error in field.errors %}
+                <span style="color: red;">{{error}}</span>
+                {% endfor %}
+
             </p>
             {% endfor %}
             <br>
