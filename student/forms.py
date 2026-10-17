@@ -31,6 +31,7 @@ class StudentForm(forms.Form):
         )
     )
     profile_pic = forms.ImageField(
+        required=False,
         label='Profile Picture',                     #label : for giving custom label
             widget = forms.ClearableFileInput(       #widget : is for type in HTML input tag
                 attrs = {                            #attrs : is used for attributes like placeholder
@@ -41,10 +42,20 @@ class StudentForm(forms.Form):
             )
         )
 
-    phone_no = forms.CharField(max_length =14,
+    phone = forms.CharField(max_length =14,
+                               
         widget = forms.TextInput(       
             attrs = {                            
                 'placeholder':'Enter phone_no',
+               
+            }
+        )
+    )
+    address = forms.CharField(
+                               
+        widget = forms.Textarea(       
+            attrs = {                            
+                'placeholder':'Enter address',
                
             }
         )

@@ -39,7 +39,7 @@ Home
                 <p class="card-text">Email: {{student.email}}</p>
                 <p class="card-text">Address: {{student.address}}</p>
                 <div style="display: flex; gap: 30px;">
-                    <button type="button" class="btn-outline theme-warning" style="border-radius: 10px;padding: 5px;width: 100px; border: 2px solid black;"><a style="text-decoration: none;color: black;" href="">Update</a></button>
+                    <button type="button" class="btn-outline theme-warning" style="border-radius: 10px;padding: 5px;width: 100px; border: 2px solid black;"><a style="text-decoration: none;color: black;" href="{% url 'update' student.id %}">Update</a></button>
                 <button type="button" class="btn-outline theme-danger" style="border-radius: 10px;padding: 5px;width: 100px; border: 2px solid black;"><a style="text-decoration: none;color: black;" href="">Delete</a></button>
                 </div>
             </div>

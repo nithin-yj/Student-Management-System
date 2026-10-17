@@ -10,22 +10,8 @@ Create New Student
 <center>
     <h1>Create Student</h1>
     <br>
-    <div class="form" style="border: 2px solid black;width: fit-content;padding: 55px;font-size: 20px;">
-        <form action="" method="post">
-            {% csrf_token %}
-            {% for field in form %}
-            <p><label for="">{{field.label}}</label><br>
-                {{field}} <br>
-                {% for error in field.errors %}
-                <span style="color: red;">{{error}}</span>
-                {% endfor %}
-
-            </p>
-            {% endfor %}
-            <br>
-            <button style="border-radius: 5px;padding: 5px;">Create Student</button>
-        </form>
-    </div>
+    {% include 'partials/form.html' %}
+   
 </center>
 
 {% endblock content %}
