@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+Delete Student
+{% endblock title %}
+
+{% block content %}
+<center>
+    <h1>Delete Student</h1> <br> <br> <br>
+    {% if message %}
+    <p style="font-size: 55px;color: red;">{{message}}</p>
+    {% else %}
+    <br> <br>
+    <h2>Do you want to delete ,{{student.name}}</h2> <br> <br>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="btn" style="display: flex; gap: 45px;" >
+            <a style="font-size: 25px;" class="btn-solid btn-styled theme-accent" href="{% url 'home' %}">Cancel</a>
+        <button style="font-size: 25px;" class="btn-solid btn-styled theme-danger">Yes,Delete</button>
+        </div>
+
+
+    </form>
+    {% endif %} 
+</center>
+
+{% endblock content %}

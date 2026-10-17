@@ -86,3 +86,23 @@ def update_student(request, id):
             context['form'] = form
 
     return render(request, 'update-student.html', context=context)
+
+
+def delete_student(request,id):
+    context = {}
+    try:
+        student = Student.objects.get(id=id)
+        context['student'] = student
+    except Student.DoesNotExist:
+        context['message'] = 'Student does not exist'
+    
+    if request.method == 'POST':
+        student.delete()
+        return redirect('home')
+
+    return render(request,'delete-student.html',context=context)
+
+
+
+
+
