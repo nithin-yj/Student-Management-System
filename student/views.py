@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Student
 from .forms import StudentForm
+from django.contrib import messages
 
 
 def home(request):
@@ -98,6 +99,7 @@ def delete_student(request,id):
     
     if request.method == 'POST':
         student.delete()
+        messages.success(request,'You successfully deleted')
         return redirect('home')
 
     return render(request,'delete-student.html',context=context)

@@ -5,13 +5,22 @@ Delete Student
 {% endblock title %}
 
 {% block content %}
+{% load static %}
 <center>
-    <h1>Delete Student</h1> <br> <br> <br>
+    <h1>Delete Student</h1> <br> 
     {% if message %}
     <p style="font-size: 55px;color: red;">{{message}}</p>
     {% else %}
-    <br> <br>
-    <h2>Do you want to delete ,{{student.name}}</h2> <br> <br>
+    
+    {% if student.profile_pic %}
+            <img src="{{student.profile_pic.url}}" class="card-img-top" alt="..." style="width: 250px; height: 350px;margin-left: 20px;margin-top: 10px;">
+            {% else %}
+            <img src="{% static 'images/blank2.jpg' %}" class="card-img-top" alt="..." style="width: 250px; height: 350px;margin-left: 20px;margin-top: 10px;">
+            {% endif %}
+            
+            <div><br></div>
+
+    <h1>Do you want to delete, {{student.name}}</h1> <br>
     <form action="" method="post">
         {% csrf_token %}
         <div class="btn" style="display: flex; gap: 45px;" >
