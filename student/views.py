@@ -2,14 +2,26 @@ from django.shortcuts import render, redirect
 from .models import Student
 from .forms import StudentForm
 from django.contrib import messages
-
+from django.contrib.auth import login
 
 def home(request):
-    students = Student.objects.all()
-    context = {
-        'students': students
-    }
+    context = {}
+    search = request.GET.get('search','')
+    context['search'] = search
+    if search:
+        students = Student.objects.filter(name__icontains = search)
+        if students:
+            context['students'] = students
+        else:
+            context['message'] = 'No Match Found!'
+    else:
+        students = Student.objects.all()
+        context['students'] = students  
     return render(request, 'home.html', context=context)
+
+
+def register(request):
+    return render(request,'register.html')
 
 
 def create_student(request):
